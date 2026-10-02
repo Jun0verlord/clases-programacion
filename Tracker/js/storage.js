@@ -8,8 +8,49 @@
 const TrackerStore = (() => {
   const STORAGE_KEY = 'novel-tracker:state:v1';
   const THEME_KEY = 'tsundoku-theme';
+  const SETTINGS_KEY = 'tsundoku-settings:v1';
+  const settingsEvent = 'novel-tracker:settings';
   const stateEvent = 'novel-tracker:change';
   let cachedState = null;
+
+  const DEFAULT_SETTINGS = Object.freeze({
+    readerFont: 'sans',
+    readerScale: 'normal',
+    autoMarkRead: true,
+    libraryView: 'compact',
+    refreshSourcesOnStart: true,
+    adultFilter: false
+  });
+
+  let cachedSettings = null;
+
+  function loadSettings() {
+    if (cachedSettings) return cachedSettings;
+
+    try {
+      const rawSettings = window.localStorage.getItem(SETTINGS_KEY);
+      const parsed = rawSettings ? JSON.parse(rawSettings) : null;
+      cachedSettings = { ...DEFAULT_SETTINGS, ...(parsed && typeof parsed === 'object' ? parsed : {}) };
+    } catch (error) {
+      console.warn('No se pudieron leer los ajustes. Se usarán los valores por defecto.', error);
+      cachedSettings = { ...DEFAULT_SETTINGS };
+    }
+
+    return cachedSettings;
+  }
+
+  function persistSettings() {
+    try {
+      window.localStorage.setItem(SETTINGS_KEY, JSON.stringify(cachedSettings));
+    } catch (error) {
+      console.warn('No se pudieron guardar los ajustes en localStorage.', error);
+    }
+  }
+
+  function commitSettings() {
+    persistSettings();
+    window.dispatchEvent(new CustomEvent(settingsEvent, { detail: { ...cachedSettings } }));
+  }
 
   function dateKey(date = new Date()) {
     const year = date.getFullYear();
@@ -338,12 +379,17 @@ const TrackerStore = (() => {
       ? 'completed'
       : 'reading';
 
-    updateEntry(novelId, {
-      completedChapters: completedInOrder,
-      currentChapter: nextChapter,
-      lastReadAt: Date.now(),
-      status: nextStatus
-    });
+    const updates = { completedChapters: completedInOrder };
+
+    // Con «marcar al terminar» activo, completar un capítulo avanza el cursor
+    // de lectura; si está desactivado solo se registra el capítulo leído.
+    if (loadSettings().autoMarkRead) {
+      updates.currentChapter = nextChapter;
+      updates.lastReadAt = Date.now();
+      updates.status = nextStatus;
+    }
+
+    updateEntry(novelId, updates);
   }
 
   function getRecentActivity(limit = 4) {
@@ -466,14 +512,142 @@ const TrackerStore = (() => {
     }
   }
 
+  /* ── Preferencias de la aplicación ────────────────────────────────────── */
+
+  const SENSITIVE_KEYWORDS = [
+    '18+',
+    'adulto',
+    'erotic',
+    'erótic',
+    'contenido sensible',
+    'nsfw',
+    'mature'
+  ];
+
+  function getSettings() {
+    return { ...loadSettings() };
+  }
+
+  function setSetting(key, value) {
+    const settings = loadSettings();
+    if (!(key in DEFAULT_SETTINGS)) return null;
+    settings[key] = value;
+    commitSettings();
+    return { ...settings };
+  }
+
+  function resetSettings() {
+    cachedSettings = { ...DEFAULT_SETTINGS };
+    commitSettings();
+    return getSettings();
+  }
+
+  function subscribeSettings(listener) {
+    window.addEventListener(settingsEvent, listener);
+    return () => window.removeEventListener(settingsEvent, listener);
+  }
+
+  function isSensitiveNovel(novel) {
+    if (!novel || !loadSettings().adultFilter) return false;
+    const haystack = [novel.genre, ...(novel.tags || [])]
+      .join(' ')
+      .toLocaleLowerCase('es');
+    return SENSITIVE_KEYWORDS.some((keyword) => haystack.includes(keyword));
+  }
+
+  function getVisibleLibrary() {
+    return getLibrary().filter(({ novel }) => !isSensitiveNovel(novel));
+  }
+
+  function removeActivity(activityId) {
+    const state = loadState();
+    const previousLength = state.activity.length;
+    state.activity = state.activity.filter((item) => item.id !== activityId);
+    if (state.activity.length === previousLength) return false;
+    commit();
+    return true;
+  }
+
+  function clearActivity() {
+    const state = loadState();
+    if (!state.activity.length) return false;
+    state.activity = [];
+    commit();
+    return true;
+  }
+
+  function refreshSources() {
+    const state = loadState();
+    const available = new Set(NovelData.sources.map(({ id }) => id));
+    const before = state.installedSources.length;
+    state.installedSources = state.installedSources.filter((id) => available.has(id));
+    if (state.installedSources.length !== before) commit();
+    return { installed: state.installedSources.length, removed: before - state.installedSources.length };
+  }
+
+  function exportBackup() {
+    return JSON.stringify({
+      app: 'tsundoku',
+      formatVersion: 1,
+      exportedAt: new Date().toISOString(),
+      state: loadState(),
+      settings: loadSettings(),
+      theme: window.localStorage.getItem(THEME_KEY) || null
+    }, null, 2);
+  }
+
+  function importBackup(rawBackup) {
+    let parsed = null;
+    try {
+      parsed = typeof rawBackup === 'string' ? JSON.parse(rawBackup) : rawBackup;
+    } catch (error) {
+      return { ok: false, error: 'El archivo no contiene un JSON válido.' };
+    }
+
+    const incomingState = parsed && parsed.state ? parsed.state : parsed;
+    if (!incomingState || typeof incomingState !== 'object' || !incomingState.novels) {
+      return { ok: false, error: 'El archivo no contiene una copia de Tsundoku.' };
+    }
+
+    cachedState = normalizeState(incomingState);
+    commit();
+
+    if (parsed.settings && typeof parsed.settings === 'object') {
+      cachedSettings = { ...DEFAULT_SETTINGS, ...parsed.settings };
+      commitSettings();
+    }
+
+    if (parsed.theme) setTheme(parsed.theme);
+
+    return { ok: true };
+  }
+
+  function clearAllData() {
+    Object.keys(window.localStorage)
+      .filter((key) => key.startsWith('novel-tracker:') || key.startsWith('tsundoku-'))
+      .forEach((key) => window.localStorage.removeItem(key));
+
+    cachedState = null;
+    cachedSettings = null;
+    loadState();
+    loadSettings();
+    commit();
+    commitSettings();
+  }
+
   loadState();
+  loadSettings();
 
   return {
     THEME_KEY,
+    SETTINGS_KEY,
+    DEFAULT_SETTINGS,
     getState: loadState,
     getNovel,
     getEntry,
     getLibrary,
+    getVisibleLibrary,
+    isSensitiveNovel,
     getProgress,
     getPagesRead,
     getCurrentPage,
@@ -487,7 +661,17 @@ const TrackerStore = (() => {
     addNovel,
     getInstalledSourceIds,
     installSource,
+    refreshSources,
     setWeeklyGoal,
+    removeActivity,
+    clearActivity,
+    getSettings,
+    setSetting,
+    resetSettings,
+    subscribeSettings,
+    exportBackup,
+    importBackup,
+    clearAllData,
     reset,
     subscribe,
     setTheme

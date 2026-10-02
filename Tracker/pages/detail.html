@@ -88,32 +88,34 @@
   </nav>
 
   <main class="shell-main min-h-screen pb-24 md:pb-8" id="main-content" data-main-content>
-    <div data-detail-view>
-      <nav class="breadcrumb" aria-label="Migas de pan"><a href="../index.html">Resumen</a><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg><a href="./library.html">Biblioteca</a><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg><span data-detail-breadcrumb-title>Detalle</span></nav>
+    <div class="shell-view">
+      <div data-detail-view>
+        <nav class="breadcrumb" aria-label="Migas de pan"><a href="../index.html">Resumen</a><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg><a href="./library.html">Biblioteca</a><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg><span data-detail-breadcrumb-title>Detalle</span></nav>
 
-      <section class="panel detail-hero">
-        <img class="detail-cover" data-detail-cover src="../Assets/covers/the-tides.svg" alt="Portada de El secreto de las mareas">
-        <div class="detail-info">
-          <div class="detail-info__top"><span class="status-pill status-pill--reading" data-detail-status>En lectura</span><span class="tag" data-detail-genre>Fantasía</span></div>
-          <h1 data-detail-title>El secreto de las mareas</h1>
-          <p class="detail-author">Por <span data-detail-author>Elena Marín</span></p>
-          <p class="detail-description" data-detail-description>Cargando la sinopsis de esta novela...</p>
-          <div class="tag-list" data-detail-tags></div>
-          <div class="detail-actions"><button class="button" type="button" data-mark-current data-mark-current="el-secreto-de-las-mareas" data-chapter-id="c11"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span data-mark-current-label>Marcar capítulo como leído</span></button><button class="button button--secondary" type="button" data-detail-favorite data-favorite="el-secreto-de-las-mareas" aria-label="Añadir a favoritos" aria-pressed="false"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5A2.5 2.5 0 0 1 9 2h6a2.5 2.5 0 0 1 2.5 2.5V22L12 18.5 6.5 22V4.5Z"/></svg><span>Favorito</span></button></div>
-        </div>
-        <aside class="detail-progress-panel"><div class="detail-progress-panel__top"><span>Progreso total</span><strong data-detail-percent>0%</strong></div><div class="progress-track" role="progressbar" aria-label="Progreso total de la novela" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span class="progress-fill" data-detail-bar style="--progress: 0%"></span></div><p><strong data-detail-pages>0 / 0</strong> páginas leídas</p><p>Ahora: <strong data-detail-current-chapter>Cargando capítulo...</strong></p><p>Última lectura: <span data-detail-last-read>Sin actividad</span></p></aside>
-      </section>
+        <section class="panel detail-hero">
+          <img class="detail-cover" data-detail-cover src="../Assets/covers/the-tides.svg" alt="Portada de El secreto de las mareas">
+          <div class="detail-info">
+            <div class="detail-info__top"><span class="status-pill status-pill--reading" data-detail-status>En lectura</span><span class="tag" data-detail-genre>Fantasía</span></div>
+            <h1 class="shell-view-title" data-detail-title>El secreto de las mareas</h1>
+            <p class="shell-view-subtitle detail-author">Por <span data-detail-author>Elena Marín</span></p>
+            <p class="detail-description" data-detail-description>Cargando la sinopsis de esta novela...</p>
+            <div class="tag-list" data-detail-tags></div>
+            <div class="detail-actions"><button class="button" type="button" data-mark-current data-mark-current="el-secreto-de-las-mareas" data-chapter-id="c11"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span data-mark-current-label>Marcar capítulo como leído</span></button><button class="button button--secondary" type="button" data-detail-favorite data-favorite="el-secreto-de-las-mareas" aria-label="Añadir a favoritos" aria-pressed="false"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5A2.5 2.5 0 0 1 9 2h6a2.5 2.5 0 0 1 2.5 2.5V22L12 18.5 6.5 22V4.5Z"/></svg><span>Favorito</span></button></div>
+          </div>
+          <aside class="detail-progress-panel"><div class="detail-progress-panel__top"><span>Progreso total</span><strong data-detail-percent>0%</strong></div><div class="progress-track" role="progressbar" aria-label="Progreso total de la novela" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span class="progress-fill" data-detail-bar style="--progress: 0%"></span></div><p><strong data-detail-pages>0 / 0</strong> páginas leídas</p><p>Ahora: <strong data-detail-current-chapter>Cargando capítulo...</strong></p><p>Última lectura: <span data-detail-last-read>Sin actividad</span></p></aside>
+        </section>
 
-      <section class="detail-stats" aria-label="Datos de la novela">
-        <article class="panel detail-stat"><span>Autor</span><strong data-detail-author-stat>—</strong></article>
-        <article class="panel detail-stat"><span>Capítulos</span><strong data-detail-page-count>—</strong></article>
-        <article class="panel detail-stat"><span>Páginas</span><strong data-detail-total-pages>—</strong></article>
-        <article class="panel detail-stat"><span>Capítulos leídos</span><strong data-detail-chapter-progress-stat>—</strong></article>
-      </section>
+        <section class="detail-stats" aria-label="Datos de la novela">
+          <article class="panel detail-stat"><span>Autor</span><strong data-detail-author-stat>—</strong></article>
+          <article class="panel detail-stat"><span>Capítulos</span><strong data-detail-page-count>—</strong></article>
+          <article class="panel detail-stat"><span>Páginas</span><strong data-detail-total-pages>—</strong></article>
+          <article class="panel detail-stat"><span>Capítulos leídos</span><strong data-detail-chapter-progress-stat>—</strong></article>
+        </section>
 
-      <section class="panel chapter-list" style="margin-top:20px" aria-labelledby="chapters-title"><div class="chapter-list__header"><div><h2 id="chapters-title">Capítulos</h2><span data-detail-chapter-progress>0 de 0 capítulos</span></div><span>Marca los que ya hayas leído</span></div><ul data-chapter-list></ul></section>
+        <section class="panel chapter-list" style="margin-top:16px" aria-labelledby="chapters-title"><div class="chapter-list__header"><div><h2 id="chapters-title">Capítulos</h2><span data-detail-chapter-progress>0 de 0 capítulos</span></div><span>Marca los que ya hayas leído</span></div><ul data-chapter-list></ul></section>
+      </div>
+      <footer class="page-footer"><span>Tsundoku · Tu companion de lectura</span><span>Tu progreso se actualiza al marcar capítulos.</span></footer>
     </div>
-    <footer class="page-footer"><span>Tsundoku · Tu companion de lectura</span><span>Tu progreso se actualiza al marcar capítulos.</span></footer>
   </main>
 
   <nav class="shell-bottom-nav fixed bottom-0 w-full flex justify-around border-t border-stone-800 bg-stone-900 py-2 z-50 md:hidden" aria-label="Navegación inferior">

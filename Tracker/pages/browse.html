@@ -88,16 +88,28 @@
   </nav>
 
   <main class="shell-main min-h-screen pb-24 md:pb-8" id="main-content" data-main-content>
-    <header class="page-header px-3 md:px-0"><div class="page-header__copy"><p class="eyebrow">Una historia nueva te espera</p><h1>Explora lecturas</h1><p>Descubre nuestro catálogo de ejemplo y guarda tus propias novelas en la biblioteca.</p></div><div class="page-header__actions"><a class="button button--secondary" href="../index.html#sources"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3-9 5 9 5 9-5-9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></svg>Gestionar fuentes</a><button class="button" type="button" data-open-dialog="add-novel-dialog"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Añadir una novela</button></div></header>
+    <div class="shell-view">
+      <header class="mb-3 flex items-end justify-between gap-3 px-3 md:px-0" aria-labelledby="browse-heading">
+        <div>
+          <p class="shell-section-label mb-1">Una historia nueva te espera</p>
+          <h1 class="shell-view-title" id="browse-heading">Explora lecturas</h1>
+          <p class="shell-view-subtitle mt-1">Descubre nuestro catálogo de ejemplo y guarda tus propias novelas en la biblioteca.</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <a class="shell-button" href="../index.html#sources"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3-9 5 9 5 9-5-9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></svg>Gestionar fuentes</a>
+          <button class="shell-accent-button inline-flex items-center gap-1.5 rounded-lg bg-blue-800 px-3 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600" type="button" data-open-dialog="add-novel-dialog"><svg class="icon !h-4 !w-4" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Añadir una novela</button>
+        </div>
+      </header>
 
-    <section class="browse-hero" aria-labelledby="browse-title">
-      <div class="browse-hero__copy"><p class="eyebrow">Catálogo de ejemplo</p><h1 id="browse-title">¿Qué quieres leer hoy?</h1><p>Filtra por género o busca por título. Tu próxima aventura puede empezar aquí.</p></div>
-      <form class="browse-hero__search" data-browse-form role="search"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4 4"/></svg><label class="sr-only" for="browse-search">Buscar en el catálogo</label><input id="browse-search" data-browse-search type="search" placeholder="Busca por título o autor..." autocomplete="off"><button class="button" type="submit">Buscar <span>Enter</span></button></form>
-    </section>
+      <section class="browse-hero" aria-labelledby="browse-title">
+        <div class="browse-hero__copy"><p class="shell-section-label">Catálogo de ejemplo</p><h1 class="shell-view-title" id="browse-title">¿Qué quieres leer hoy?</h1><p class="shell-view-subtitle">Filtra por género o busca por título. Tu próxima aventura puede empezar aquí.</p></div>
+        <form class="browse-hero__search" data-browse-form role="search"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4 4"/></svg><label class="sr-only" for="browse-search">Buscar en el catálogo</label><input id="browse-search" data-browse-search type="search" placeholder="Busca por título o autor..." autocomplete="off"><button class="button" type="submit">Buscar <span>Enter</span></button></form>
+      </section>
 
-    <div class="browse-controls"><div class="browse-genres" role="group" aria-label="Filtrar por género"><button class="filter-chip is-active" type="button" data-browse-genre="all" aria-pressed="true">Todos</button><button class="filter-chip" type="button" data-browse-genre="Fantasía" aria-pressed="false">Fantasía</button><button class="filter-chip" type="button" data-browse-genre="Misterio" aria-pressed="false">Misterio</button><button class="filter-chip" type="button" data-browse-genre="Romance" aria-pressed="false">Romance</button><button class="filter-chip" type="button" data-browse-genre="Ciencia ficción" aria-pressed="false">Ciencia ficción</button><button class="filter-chip" type="button" data-browse-genre="Aventura" aria-pressed="false">Aventura</button></div><span class="library-meta" data-browse-count>— resultados</span></div>
-    <section class="browse-grid" data-browse-grid aria-live="polite"></section>
-    <footer class="page-footer"><span>Tsundoku · Tu companion de lectura</span><span>Puedes añadir títulos propios desde el botón superior.</span></footer>
+      <div class="browse-controls px-3 md:px-0"><div class="browse-genres" role="group" aria-label="Filtrar por género"><button class="shell-filter is-active" type="button" data-browse-genre="all" aria-pressed="true">Todos</button><button class="shell-filter" type="button" data-browse-genre="Fantasía" aria-pressed="false">Fantasía</button><button class="shell-filter" type="button" data-browse-genre="Misterio" aria-pressed="false">Misterio</button><button class="shell-filter" type="button" data-browse-genre="Romance" aria-pressed="false">Romance</button><button class="shell-filter" type="button" data-browse-genre="Ciencia ficción" aria-pressed="false">Ciencia ficción</button><button class="shell-filter" type="button" data-browse-genre="Aventura" aria-pressed="false">Aventura</button></div><span class="text-[11px] font-medium text-stone-500 dark:text-stone-400" data-browse-count>— resultados</span></div>
+      <section class="grid grid-cols-3 gap-3 p-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8" data-browse-grid aria-live="polite"></section>
+      <footer class="page-footer"><span>Tsundoku · Tu companion de lectura</span><span>Puedes añadir títulos propios desde el botón superior.</span></footer>
+    </div>
   </main>
 
   <nav class="shell-bottom-nav fixed bottom-0 w-full flex justify-around border-t border-stone-800 bg-stone-900 py-2 z-50 md:hidden" aria-label="Navegación inferior">

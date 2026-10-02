@@ -403,13 +403,11 @@ const UI = (() => {
 
   function emptyState({ iconName = 'book', title, message, actionLabel = '', action = '' }) {
     return `
-      <div class="empty-state">
-        <div class="empty-state__inner">
-          <span class="empty-state__icon">${icon(iconName, 'icon--lg')}</span>
-          <h2>${escapeHTML(title)}</h2>
-          <p>${escapeHTML(message)}</p>
-          ${actionLabel ? `<button class="button" type="button" ${action}>${escapeHTML(actionLabel)}</button>` : ''}
-        </div>
+      <div class="col-span-full flex flex-col items-center gap-2 rounded-xl border border-dashed border-stone-300 p-10 text-center dark:border-stone-700">
+        <span class="grid h-10 w-10 place-items-center rounded-lg bg-stone-100 text-stone-500 dark:bg-stone-800 dark:text-stone-400">${icon(iconName, 'icon--sm')}</span>
+        <strong class="text-sm font-semibold">${escapeHTML(title)}</strong>
+        <p class="max-w-sm text-[11px] leading-relaxed text-stone-500 dark:text-stone-400">${escapeHTML(message)}</p>
+        ${actionLabel ? `<button class="shell-accent-button mt-1 inline-flex items-center gap-1.5 rounded-lg bg-blue-800 px-3 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600" type="button" ${action}>${escapeHTML(actionLabel)}</button>` : ''}
       </div>
     `;
   }

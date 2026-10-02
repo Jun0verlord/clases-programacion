@@ -28,6 +28,13 @@
     // Cargar estado guardado
     const isCollapsed = localStorage.getItem(SIDEBAR_KEY) === 'true';
     sidebar.classList.toggle('is-collapsed', isCollapsed);
+    const labels = document.getElementsByClassName('sidebar-label')
+    for (let item of labels) {
+      isCollapsed ?
+        item.classList.add('hidden') :
+        item.classList.remove('hidden')
+    }
+
     mainContent?.classList.toggle('is-sidebar-collapsed', isCollapsed);
     updateToggleButton(toggleButton, isCollapsed);
 
@@ -35,6 +42,11 @@
     toggleButton?.addEventListener('click', () => {
       const newState = !sidebar.classList.contains('is-collapsed');
       sidebar.classList.toggle('is-collapsed', newState);
+      const labels = document.getElementsByClassName('sidebar-label')
+
+      for (let item of labels) {
+        newState ? item.classList.add('hidden') : item.classList.remove('hidden')
+      }
       mainContent?.classList.toggle('is-sidebar-collapsed', newState);
       localStorage.setItem(SIDEBAR_KEY, String(newState));
       updateToggleButton(toggleButton, newState);

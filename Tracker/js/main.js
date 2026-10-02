@@ -669,7 +669,7 @@
     const grid = document.querySelector('[data-library-grid]');
     if (!grid) return;
     grid.innerHTML = library.length
-      ? UI.novelGrid(library)
+      ? UI.coverGrid(library)
       : UI.emptyState({
           iconName: 'search',
           title: 'No encontramos esa lectura',
@@ -846,7 +846,7 @@
     const grid = document.querySelector('[data-browse-grid]');
     if (!grid) return;
     grid.innerHTML = library.length
-      ? UI.novelGrid(library)
+      ? UI.coverGrid(library)
       : UI.emptyState({
           iconName: 'search',
           title: 'No hay coincidencias',
