@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 860">
+  <defs>
+    <linearGradient id="tides-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#274b68"/><stop offset="1" stop-color="#152d45"/></linearGradient>
+    <linearGradient id="tides-wave" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#8db3c6" stop-opacity=".75"/><stop offset="1" stop-color="#517d9a" stop-opacity=".2"/></linearGradient>
+  </defs>
+  <rect width="600" height="860" fill="url(#tides-bg)"/>
+  <circle cx="446" cy="210" r="132" fill="#b7d1d8" opacity=".13"/>
+  <circle cx="446" cy="210" r="82" fill="none" stroke="#c7dce0" stroke-width="2" opacity=".33"/>
+  <path d="M0 588c95-66 168-67 253 0s156 66 238 0 109-61 109-61v333H0Z" fill="#10263b" opacity=".9"/>
+  <path d="M0 624c96-53 161-52 248 9 84 59 170 49 250-10 42-30 73-42 102-36v273H0Z" fill="#0c2134"/>
+  <path d="M-30 510c95-38 168-36 254 17 87 54 159 51 244-2 55-34 97-48 162-25" fill="none" stroke="url(#tides-wave)" stroke-width="13" stroke-linecap="round" opacity=".9"/>
+  <path d="M-20 557c85-32 151-28 233 19 89 52 169 53 263-4 52-32 93-42 144-27" fill="none" stroke="#a5c4ce" stroke-width="3" opacity=".55"/>
+  <path d="M85 380h340M85 404h235" stroke="#d5e4e4" stroke-width="2" opacity=".4"/>
+  <text x="70" y="105" fill="#dce9e9" font-family="Georgia,serif" font-size="23" letter-spacing="5">ELENA MARÍN</text>
+  <text x="70" y="190" fill="#fff" font-family="Georgia,serif" font-size="66">El secreto</text>
+  <text x="70" y="260" fill="#fff" font-family="Georgia,serif" font-size="66">de las mareas</text>
+  <path d="M70 300h130" stroke="#b7d1d8" stroke-width="3" opacity=".75"/>
+  <text x="70" y="770" fill="#b8d0d6" font-family="sans-serif" font-size="16" letter-spacing="3">UNA NOVELA SOBRE LO QUE EL MAR OCULTA</text>
+</svg>

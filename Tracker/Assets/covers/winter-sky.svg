@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 860">
+  <defs>
+    <linearGradient id="winter-bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#a9c4d1"/><stop offset=".58" stop-color="#d3e0e2"/><stop offset="1" stop-color="#7895a6"/></linearGradient>
+  </defs>
+  <rect width="600" height="860" fill="url(#winter-bg)"/>
+  <circle cx="430" cy="182" r="83" fill="#f1f0df" opacity=".78"/>
+  <circle cx="430" cy="182" r="112" fill="none" stroke="#eef3ef" stroke-width="2" opacity=".4"/>
+  <path d="M0 550 175 310l97 125 113-195 215 310v310H0Z" fill="#607f91"/>
+  <path d="m175 310 47 148-47-37-58 62 58-173ZM385 240l70 116-64-37-54 71 48-150Z" fill="#e8efed" opacity=".83"/>
+  <path d="M0 650c120-35 205-15 305 22 93 34 181 33 295-16v204H0Z" fill="#d9e5e5"/>
+  <path d="M0 703c126-25 199-2 295 28 102 32 194 22 305-19" fill="none" stroke="#93b0bc" stroke-width="5" opacity=".55"/>
+  <text x="54" y="96" fill="#294b61" font-family="sans-serif" font-size="19" letter-spacing="5">LUCÍA VEGA</text>
+  <text x="54" y="175" fill="#203f55" font-family="Georgia,serif" font-size="69">Cielo de</text>
+  <text x="54" y="247" fill="#203f55" font-family="Georgia,serif" font-size="69">invierno</text>
+  <path d="M57 279h120" stroke="#426b82" stroke-width="3"/>
+  <text x="54" y="785" fill="#3e6071" font-family="sans-serif" font-size="15" letter-spacing="3">DOS PERSONAS. UNA SEMANA. UN NUEVO CAMINO.</text>
+</svg>

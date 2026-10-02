@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="Styles.css">
+</head>
+
+<body>
+
+    
+        <h1>Registro de usuario</h1>
+        <h2>Datos personales</h2>
+    
+
+    <Form action="#" method="post">
+        <fieldset>
+            <legend>Informacion personal</legend>
+
+        <Label>Nombres</Label>
+        <input type="text" name="Nombres" id="nombres">
+
+        <label for="Apellidos">Apellidos</label>
+        <input type="text" name="Apellidos" id="Apellidos">
+
+        <br>
+        <br>
+
+        <label for="">Documento</label>
+        <input type="number" name="Documento" min="1" maxlength="15">
+        <label for="">Fecha De Nacimiento</label>
+        <input type="date" value="2026-08-14">
+
+        <br>
+        <br>
+
+        <label for="">Genero</label>
+        <label for="Masculino"><input type="radio" name="Genero" value="Masculino" id="Masculino"> Masculino</label>
+
+        <label for="Femenino"><input type="radio" name="Genero" value="Femenino" id="Femenino">Femenino</label>
+
+        <label for="Otro"><input type="radio" name="Genero" value="Otro" id="Otro">Otro</label>
+        
+
+        <label for="">Foto de perfil</label>
+        <input type="file" name="Foto de perfil" accept="image/*">
+        <br> <br>
+
+
+        </fieldset>
+
+      
+            <h2>Datos de la cuenta</h2>
+       
+            <Fieldset>
+                <legend>Informacion de la cuenta</legend>
+                <div class="username">
+
+        <label for="uname">Nombre de usuario</label>
+        <input type="text" size="83.5" name="Nombre de usuario" id="uname">
+        <input type="button" value="Verificar" onoclick="Verificar" class="Verificar">
+  </div>
+        <br>
+
+        <label for="">Correo Electronico</label>
+        <input type="email" size="35" name="ejemplo@gmail.com" id="correo">
+        <label for="">Telefono</label>
+        <input type="tel" name="Telefono"> <br>
+        <label for="Contraseña">Contraseña</label>
+        <input type="password" size="38" name="Contraseña" placeholder="*">
+        <label for="">Repetir Contraseña</label>
+        <input type="password" size="38" name="Contraseña" placeholder="*">
+        <br>
+        <Label>Sitio web / Portafolio</Label>
+        <input type="url" size="55" name="Portafolio link" placeholder="https://enlace.ejemplo.com"> <br>
+        
+    </Fieldset>
+
+        
+            <h2>Preferencias y disponibilidad</h2>
+            <fieldset>
+
+        <Label>Ciudad</Label>
+        <input type="search" size="45" name="ciudad" placeholder="Busca tu Ciudad">
+        <label for="Color del perfil"></label>
+        <input type="color" name="Color perfil" value="#10f000">
+        <br>
+        <label for="">Años de experiencia</label>
+        <input type="range" name="Experiencia" min="0" max="50" value="0">
+        <br><br>
+        <label for="">Mes de inicio</label>
+        <input type="month" name="MesInicial" Value="2026-08">
+        <label for="">Semana Disponible</label>
+        <input type="week" name="SemanaD" value="2026-W37">
+        <br>
+        <label for="">hora de preferencia de contacto</label>
+        <input type="time" name="HoraContacto" Value="10:00">
+        <label for="">Cita de bienvenida</label>
+        <input type="datetime-local" name="C_Bienvenida" value="2026-08-22t10:00"> <br>
+        
+    </fieldset>
+
+        <label for="">
+            <h4>Temas de interes</h4>
+        </label>
+        <label><input type="checkbox" name="Temas" value="frontend"> frontend</label>
+        <label><input type="checkbox" name="Temas" value="backend"> Backend</label>
+        <label><input type="checkbox" name="Temas" value="Datos"> Datos</label>
+        <label><input type="checkbox" name="Temas" value="Diseño"> Diseño</label>
+        <br>
+        <label for="">
+            <h4>Plan</h4>
+        </label>
+        <label for="">Gratis <input type="Radio" name="free" value="free"></label>
+        <label for="">Pro <input type="Radio" name="Pro" value="pro"></label>
+        <label for="">Equipo <input type="Radio" name="Team" value="Equipo"></label>
+
+        <br><br>
+        <h3>Confirmacion</h3>
+        <label><input type="checkbox" name="Acepto" value="Acepto">Acepto Terminos y condiciones</label> <br> <br>
+        <label for=""><input type="checkbox" name="RecibirXCorreo" id="Boletin">Quiero recibir el boletin por
+            correo</label>
+        <br>
+        <br>
+        <input type="submit" value="Registrarse" class="botones">
+        <input type="reset" name="limpiar" value="limpiar" class="botones">
+        <input type="button" value="Crear Cuenta" class="botones">
+
+
+    </form>
+
+
+
+
+
+
+</body>
+
+</html>

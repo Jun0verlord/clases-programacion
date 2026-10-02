@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 860">
+  <defs>
+    <linearGradient id="blue-bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#3f6178"/><stop offset=".62" stop-color="#7e9eaa"/><stop offset="1" stop-color="#c5d3d1"/></linearGradient>
+  </defs>
+  <rect width="600" height="860" fill="url(#blue-bg)"/>
+  <circle cx="445" cy="188" r="92" fill="#e4e2d1" opacity=".56"/>
+  <path d="M0 480c84-40 134-47 214-8 78 38 139 37 215-5 60-34 105-39 171-14v407H0Z" fill="#436b7a" opacity=".78"/>
+  <path d="M0 590c111-26 185-7 274 30 98 40 187 35 326-31v271H0Z" fill="#274b5f"/>
+  <path d="M0 676c125-23 192 7 279 34 93 29 188 25 321-31" fill="none" stroke="#b2c7c8" stroke-width="3" opacity=".55"/>
+  <g fill="none" stroke="#e1e7e1" stroke-width="5" stroke-linecap="round">
+    <path d="M170 468c-18-32-7-55 19-66 26 14 33 39 15 67"/>
+    <path d="M430 490c-18-32-7-55 19-66 26 14 33 39 15 67"/>
+  </g>
+  <text x="56" y="100" fill="#edf2ec" font-family="sans-serif" font-size="20" letter-spacing="5">CLARA NERI</text>
+  <text x="56" y="185" fill="#fff" font-family="Georgia,serif" font-size="62">La hora de</text>
+  <text x="56" y="250" fill="#fff" font-family="Georgia,serif" font-size="62">los cisnes</text>
+  <path d="M58 286h150" stroke="#d6e1dc" stroke-width="3" opacity=".7"/>
+  <text x="56" y="785" fill="#d4dfdc" font-family="sans-serif" font-size="15" letter-spacing="3">ALGUNOS VERANOS VUELVEN A BUSCARNOS</text>
+</svg>

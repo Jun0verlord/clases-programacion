@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="midnight">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Organiza tus novelas y consulta tu progreso de lectura.">
+  <title>Biblioteca · Tsundoku</title>
+  <script>
+    (() => {
+      try {
+        const validThemes = ['amoled', 'midnight', 'mocha', 'parchment'];
+        const savedTheme = localStorage.getItem('tsundoku-theme');
+        const legacyTheme = localStorage.getItem('novel-tracker:theme');
+        document.documentElement.dataset.theme = validThemes.includes(savedTheme)
+          ? savedTheme
+          : legacyTheme === 'light' ? 'parchment' : 'midnight';
+      } catch (error) {
+        document.documentElement.dataset.theme = 'midnight';
+      }
+    })();
+  </script>
+  <link rel="icon" type="image/svg+xml" href="../Assets/icons/logo.svg">
+  <link rel="stylesheet" href="../css/styles.css">
+  <script src="../js/tailwind.js"></script>
+  <script src="../js/novelData.js" defer></script>
+  <script src="../js/storage.js" defer></script>
+  <script src="../js/ui.js" defer></script>
+  <script src="../js/main.js" defer></script>
+  <script src="../js/sidebar.js" defer></script>
+</head>
+<body class="tsun-shell" data-page="library" data-asset-prefix="../" data-page-prefix="../">
+  <a class="skip-link" href="#main-content">Saltar al contenido</a>
+
+  <header class="shell-header h-14" aria-label="Encabezado de Tsundoku">
+    <div class="flex min-w-0 items-center gap-2">
+      <button class="icon-button !h-9 !w-9 !rounded-lg" type="button" data-sidebar-toggle aria-label="Colapsar barra lateral" aria-expanded="true">
+        <svg class="icon !h-[18px] !w-[18px]" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <span class="shell-logo" aria-hidden="true">
+        <img src="../Assets/images/logo-kanji.png" alt="">
+      </span>
+      <span class="shell-title truncate font-semibold">Tsundoku</span>
+      <span class="hidden text-[11px] font-medium text-stone-400 dark:text-stone-500 sm:inline">Biblioteca</span>
+    </div>
+
+    <div class="relative ml-auto flex items-center gap-1">
+      <button class="icon-button !h-9 !w-9 !rounded-lg" type="button" data-theme-toggle aria-label="Cambiar a modo oscuro" aria-pressed="false">
+        <svg class="icon !h-[18px] !w-[18px] theme-icon--moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15.2A8.5 8.5 0 0 1 8.8 4 8.5 8.5 0 1 0 20 15.2Z"/></svg>
+        <svg class="icon !h-[18px] !w-[18px] theme-icon--sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg>
+      </button>
+      <div class="user-chip" aria-label="Perfil de Ana"><span class="avatar" aria-hidden="true">AR</span><span class="user-chip__copy"><strong>Ana reader</strong><span>Mi espacio</span></span></div>
+    </div>
+  </header>
+
+  <div data-sidebar-overlay aria-hidden="true"></div>
+
+  <!-- Barra lateral colapsable -->
+  <nav class="shell-sidebar" data-sidebar aria-label="Navegación principal">
+    <div class="sidebar-section-label">Mi espacio</div>
+
+    <a class="sidebar-item" href="../index.html" data-nav-item="dashboard" title="Resumen">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9h13v-9M9.5 19v-5h5v5"/></svg>
+      <span class="sidebar-label">Resumen</span>
+    </a>
+    <a class="sidebar-item is-active" href="./library.html" data-nav-item="library" title="Biblioteca" aria-current="page">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V5.5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"/><path d="M6 17.5h13M8 7h7M8 10h7"/></svg>
+      <span class="sidebar-label">Biblioteca</span>
+    </a>
+    <a class="sidebar-item" href="./browse.html" data-nav-item="browse" title="Explorar">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"/></svg>
+      <span class="sidebar-label">Explorar</span>
+    </a>
+
+    <div class="sidebar-section-label">Descubrir</div>
+
+    <a class="sidebar-item" href="../index.html#sources" data-nav-item="sources" title="Fuentes">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3-9 5 9 5 9-5-9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></svg>
+      <span class="sidebar-label">Fuentes</span>
+    </a>
+
+    <div class="sidebar-section-label">Configuración</div>
+
+    <a class="sidebar-item" href="../index.html#settings" data-nav-item="settings" title="Ajustes">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.86 2.86-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21H9.55v-.1A1.7 1.7 0 0 0 8.5 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.86-2.86.06-.06A1.7 1.7 0 0 0 4.1 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H2.3V9.55h.1A1.7 1.7 0 0 0 4.1 8.5a1.7 1.7 0 0 0-.34-1.88l-.06-.06L6.56 3.7l.06.06A1.7 1.7 0 0 0 8.5 4.1a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V2.3h4.05v.1A1.7 1.7 0 0 0 15 4.1a1.7 1.7 0 0 0 1.88-.34l.06-.06 2.86 2.86-.06.06A1.7 1.7 0 0 0 19.4 8.5c.14.4.35.74.6 1 .3.3.7.45 1.1.45h.1v4.05h-.1A1.7 1.7 0 0 0 19.4 15Z"/></svg>
+      <span class="sidebar-label">Ajustes</span>
+    </a>
+  </nav>
+
+  <main class="shell-main min-h-screen pb-24 md:pb-8" id="main-content" data-main-content>
+    <div class="mb-3 flex gap-2 overflow-x-auto px-3 pb-1 md:px-0" role="group" aria-label="Filtrar por estado">
+      <button class="filter-chip is-active" type="button" data-library-filter="all" aria-pressed="true">Todas</button>
+      <button class="filter-chip" type="button" data-library-filter="reading" aria-pressed="false">En lectura</button>
+      <button class="filter-chip" type="button" data-library-filter="planned" aria-pressed="false">Por leer</button>
+    </div>
+
+    <p class="library-meta mb-0 px-3 text-[11px] font-medium text-stone-500 dark:text-stone-400 md:px-0" data-library-count> Cargando biblioteca...</p>
+    <section class="novel-grid grid grid-cols-3 gap-3 p-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8" data-library-grid aria-live="polite"></section>
+  </main>
+
+  <nav class="shell-bottom-nav fixed bottom-0 w-full flex justify-around border-t border-stone-800 bg-stone-900 py-2 z-50 md:hidden" aria-label="Navegación inferior">
+    <a class="shell-bottom-item" href="../index.html" aria-current="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9h13v-9M9.5 19v-5h5v5"/></svg><span>Resumen</span></a>
+    <a class="shell-bottom-item is-active" href="./library.html" aria-current="page"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V5.5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"/><path d="M6 17.5h13M8 7h7M8 10h7"/></svg><span>Biblioteca</span></a>
+    <a class="shell-bottom-item" href="./browse.html" aria-current="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"/></svg><span>Explorar</span></a>
+    <a class="shell-bottom-item" href="../index.html#sources" aria-current="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3-9 5 9 5 9-5-9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></svg><span>Fuentes</span></a>
+  </nav>
+</body>
+</html>

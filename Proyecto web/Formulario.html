@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <script src="./tailwind.js"></script>
+</head>
+
+<body class="bg-slate-700 flex items-center justify-center ">
+
+    <h1 class=" flex justify-center text-center rounded ">Registro de usuario</h1>
+
+    <Form action="#" method="post" class=" m-2 p-2 bg-slate-100">
+
+        <fieldset>
+            <legend class="justify-center text-xl text-black">Informacion Personal</legend><br>
+            <div class="flex gap-4 items-center">
+                <Label for="nombres" class="block text-base font-bold">Nombres</Label>
+                <input class=" max-w-sm mt-1 block w-full rounded-lg border border-slate-300 px-3 py-1 text-sm
+                text-slate-800 shadow-sm transition
+                focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200" type="text" name="Nombres"
+                    id="nombres">
+
+                <label for="Apellidos" class="block text-base font-bold">Apellidos</label>
+                <input class=" max-w-sm mt-1 block w-full rounded-lg border border-slate-300 px-3 py-1 text-sm
+                text-slate-800 shadow-sm transition
+                focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200" type="text" name="Apellidos"
+                    id="Apellidos">
+
+            </div>
+
+            <div class="flex gap-4 items-center">
+
+                <label class="block text-base font-bold">Documento</label>
+                <input class="max-w-xs h-[12mpx] mt-1 block w-full rounded-lg border border-slate-300 px-2 py-1 text-sm
+                text-slate-800 shadow-sm transition
+                focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200" type="number" name="Documento"
+                    min="1" maxlength="15">
+
+                <label class="block text-base font-bold">Fecha De Nacimiento</label>
+                <input class=" max-w-xs h-[12mpx] mt-1 block w-full rounded-lg border border-slate-300 px-2 py-1 text-sm
+                text-slate-800 shadow-sm transition
+                focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200" type="date"
+                    value="2026-08-14">
+            </div>
+
+            <br>
+
+               <label class="block text-sm font-bold py-2">Genero</label>
+            <div class="flex flex-wrap gap-2 items-baseline">
+                <label for="Masculino" class="block text-base font-bold px-2"><input type="radio" name="Genero" value="Masculino" id="Masculino">
+                Masculino</label>
+
+                <label for="Femenino" class="block text-base font-bold px-2"><input type="radio" name="Genero" value="Femenino" id="Femenino">Femenino</label>
+
+                <label for="Otro" class="block text-base font-bold px-2"><input type="radio" name="Genero" value="Otro" id="Otro">Otro</label>
+
+                    <label class="block text-sm font-bold p-3">Foto de perfil</label>
+                    <input type="file" name="Foto de perfil" accept="image/*" class="block max-w-screen-sm text-sm text-slate-700 file:mr-4 file:py-1 file:px-3 file:rounded-lg file:border-1 border-blue-500 file:text-xs file:font-semibold file:bg-sky-50 file:text-black hover:file:bg-sky-200 transition-all cursor-pointer">
+                </div>
+                <br>
+            </div>
+
+
+
+        </fieldset>
+
+
+        <h1 class=" justify-center text-xl text-black"> Datos de la cuenta</h1>
+
+        <Fieldset class="bg-slate-100">
+            <div class="flex gap 2">
+                <label for="uname" class="block text-base font-bold">Nombre de usuario</label>
+                <input type="text" size="83.5" name="Nombre de usuario" id="uname"
+                class="max-w-md mt-1 block w-full rounded-sm border border-slate-300 px-3 py-1 text-sm text-slate-800 shadow-sm transition">
+
+                <input type="button" value="Verificar" onoclick="Verificar"
+                class=" bg-sky-50 max-w-20 max-h-20 border border-sky-200">
+
+            </div>
+            <br>
+
+            <label for="">Correo Electronico</label>
+            <input type="email" size="35" name="ejemplo@gmail.com" id="correo">
+            <label for="">Telefono</label>
+            <input type="tel" name="Telefono"> <br>
+            <label for="Contraseña">Contraseña</label>
+            <input type="password" size="38" name="Contraseña" placeholder="*">
+            <label for="">Repetir Contraseña</label>
+            <input type="password" size="38" name="Contraseña" placeholder="*">
+            <br>
+            <Label>Sitio web / Portafolio</Label>
+            <input type="url" size="55" name="Portafolio link" placeholder="https://enlace.ejemplo.com"> <br>
+
+        </Fieldset>
+
+
+        <h2>Preferencias y disponibilidad</h2>
+        <fieldset class="bg-slate-100">
+
+            <Label>Ciudad</Label>
+            <input type="search" size="45" name="ciudad" placeholder="Busca tu Ciudad">
+            <label for="Color del perfil"></label>
+            <input type="color" name="Color perfil" value="#10f000">
+            <br>
+            <label for="">Años de experiencia</label>
+            <input type="range" name="Experiencia" min="0" max="50" value="0">
+            <br><br>
+            <label for="">Mes de inicio</label>
+            <input type="month" name="MesInicial" Value="2026-08">
+            <label for="">Semana Disponible</label>
+            <input type="week" name="SemanaD" value="2026-W37">
+            <br>
+            <label for="">hora de preferencia de contacto</label>
+            <input type="time" name="HoraContacto" Value="10:00">
+            <label for="">Cita de bienvenida</label>
+            <input type="datetime-local" name="C_Bienvenida" value="2026-08-22t10:00"> <br>
+
+        </fieldset>
+
+        <label for="">
+            <h4>Temas de interes</h4>
+        </label>
+        <label><input type="checkbox" name="Temas" value="frontend"> frontend</label>
+        <label><input type="checkbox" name="Temas" value="backend"> Backend</label>
+        <label><input type="checkbox" name="Temas" value="Datos"> Datos</label>
+        <label><input type="checkbox" name="Temas" value="Diseño"> Diseño</label>
+        <br>
+        <label for="">
+            <h4>Plan</h4>
+        </label>
+        <label for="">Gratis <input type="Radio" name="free" value="free"></label>
+        <label for="">Pro <input type="Radio" name="Pro" value="pro"></label>
+        <label for="">Equipo <input type="Radio" name="Team" value="Equipo"></label>
+
+        <br><br>
+        <h3>Confirmacion</h3>
+        <label><input type="checkbox" name="Acepto" value="Acepto">Acepto Terminos y condiciones</label> <br> <br>
+        <label for=""><input type="checkbox" name="RecibirXCorreo" id="Boletin">Quiero recibir el boletin por
+            correo</label>
+        <br>
+        <br>
+        <input type="submit" value="Registrarse" class="botones">
+        <input type="reset" name="limpiar" value="limpiar" class="botones">
+        <input type="button" value="Crear Cuenta" class="botones">
+
+
+    </form>
+
+
+
+
+
+
+</body>
+
+</html>

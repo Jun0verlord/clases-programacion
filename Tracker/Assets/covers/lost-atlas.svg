@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 860">
+  <defs>
+    <linearGradient id="atlas-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d2d2c5"/><stop offset="1" stop-color="#9db3b8"/></linearGradient>
+  </defs>
+  <rect width="600" height="860" fill="url(#atlas-bg)"/>
+  <path d="M56 106 273 56l270 70-35 586-264 81L76 714Z" fill="#dbe0d5" opacity=".54" stroke="#526f78" stroke-width="3"/>
+  <path d="m80 243 127-73 101 93 165-90M77 487l140-104 114 80 171-138M80 625l126-78 141 74 117-71" fill="none" stroke="#577a84" stroke-width="4" opacity=".7"/>
+  <g fill="#62818a" opacity=".7"><circle cx="159" cy="356" r="9"/><circle cx="402" cy="357" r="9"/><circle cx="302" cy="518" r="9"/><circle cx="225" cy="649" r="9"/><circle cx="460" cy="610" r="9"/></g>
+  <path d="M422 470 482 410l40 40-60 60Z" fill="#3e6273" opacity=".82"/>
+  <path d="M455 430v-67M455 363l-22-20M455 363l22-20" fill="none" stroke="#3e6273" stroke-width="4"/>
+  <text x="56" y="95" fill="#355869" font-family="sans-serif" font-size="20" letter-spacing="5">NORA VALDÉS</text>
+  <text x="56" y="785" fill="#284c5c" font-family="Georgia,serif" font-size="58">Atlas de lo perdido</text>
+  <path d="M58 806h130" stroke="#4d707a" stroke-width="3"/>
+</svg>

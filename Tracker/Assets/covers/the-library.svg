@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 860">
+  <defs>
+    <linearGradient id="library-bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#314f61"/><stop offset="1" stop-color="#172a39"/></linearGradient>
+  </defs>
+  <rect width="600" height="860" fill="url(#library-bg)"/>
+  <rect x="60" y="60" width="480" height="555" rx="3" fill="#1d3443" stroke="#b4c8c8" stroke-opacity=".35" stroke-width="3"/>
+  <rect x="91" y="90" width="418" height="495" fill="#162b3a"/>
+  <g fill="#8ca7b0" opacity=".6">
+    <rect x="120" y="140" width="44" height="120"/><rect x="171" y="125" width="30" height="135"/><rect x="208" y="150" width="55" height="110"/><rect x="270" y="130" width="38" height="130"/><rect x="316" y="120" width="28" height="140"/><rect x="353" y="144" width="51" height="116"/><rect x="412" y="130" width="35" height="130"/>
+    <rect x="120" y="342" width="65" height="123"/><rect x="193" y="328" width="40" height="137"/><rect x="242" y="355" width="28" height="110"/><rect x="278" y="335" width="54" height="130"/><rect x="340" y="350" width="36" height="115"/><rect x="384" y="322" width="63" height="143"/>
+  </g>
+  <g stroke="#d4dedb" stroke-opacity=".4" stroke-width="3" fill="none">
+    <path d="M100 275h395M100 310h395M100 475h395M100 510h395M100 545h395"/>
+  </g>
+  <path d="M180 90v495M420 90v495" stroke="#d6e2dc" stroke-opacity=".2" stroke-width="5"/>
+  <path d="M300 90v495" stroke="#d6e2dc" stroke-opacity=".14" stroke-width="3"/>
+  <text x="60" y="690" fill="#dbe7e5" font-family="Georgia,serif" font-size="24" letter-spacing="5">MATEO SILVA</text>
+  <text x="60" y="762" fill="#fff" font-family="Georgia,serif" font-size="63">La última</text>
+  <text x="60" y="824" fill="#fff" font-family="Georgia,serif" font-size="63">biblioteca</text>
+</svg>

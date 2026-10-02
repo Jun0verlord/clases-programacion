@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es" data-theme=" ">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tsundoku, tu biblioteca personal de novelas.">
+  <title>Tsundoku · Biblioteca</title>
+  <script>
+    (() => {
+      try {
+        const validThemes = ['amoled', 'midnight', 'mocha', 'parchment'];
+        const savedTheme = localStorage.getItem('tsundoku-theme');
+        const legacyTheme = localStorage.getItem('novel-tracker:theme');
+        document.documentElement.dataset.theme = validThemes.includes(savedTheme)
+          ? savedTheme
+          : legacyTheme === 'light' ? 'parchment' : 'midnight';
+      } catch (error) {
+        document.documentElement.dataset.theme = 'midnight';
+      }
+    })();
+  </script>
+  <link rel="icon" type="image/svg+xml" href="./Assets/icons/logo.svg">
+  <script src="./js/tailwind.js"></script>
+  <link rel="stylesheet" href="./css/styles.css">
+  <style type="text/tailwindcss">
+    @theme {
+      --color-tsun-blue: #3c668d;
+    }
+
+    @custom-variant dark (&:where([data-theme="amoled"], [data-theme="midnight"], [data-theme="mocha"], [data-theme="dark"], [data-theme="amoled"] *, [data-theme="midnight"] *, [data-theme="mocha"] *, [data-theme="dark"] *));
+  </style>
+  <script src="./js/novelData.js" defer></script>
+  <script src="./js/storage.js" defer></script>
+  <script src="./js/ui.js" defer></script>
+  <script src="./js/main.js" defer></script>
+  <script src="./js/sidebar.js" defer></script>
+</head>
+<body class="tsun-shell" data-page="shell" data-asset-prefix="./" data-page-prefix="./">
+  <a class="skip-link" href="#shell-content">Saltar al contenido</a>
+
+  <header class="shell-header h-14" aria-label="Encabezado de Tsundoku">
+    <div class="flex min-w-0 items-center gap-2">
+      <button class="icon-button !h-9 !w-9 !rounded-lg" type="button" data-sidebar-toggle aria-label="Colapsar barra lateral" aria-expanded="true">
+        <svg class="icon !h-[18px] !w-[18px]" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <span class="shell-logo" aria-hidden="true">
+        <img src="./Assets/images/Logo-kanji.png" alt="">
+      </span>
+      <span class="shell-title truncate font-semibold">Tsundoku</span>
+      <span class="hidden text-[11px] font-medium text-stone-400 dark:text-stone-500 sm:inline">Biblioteca</span>
+    </div>
+
+    <div class="relative ml-auto flex items-center gap-1">
+      <button class="icon-button !h-9 !w-9 !rounded-lg" type="button" data-shell-search-toggle aria-label="Buscar" aria-expanded="false">
+        <svg class="icon !h-[18px] !w-[18px]" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4 4"/></svg>
+      </button>
+      <div class="shell-search-panel" data-shell-search-panel hidden>
+        <form class="flex items-center gap-2" data-shell-search-form role="search">
+          <svg class="icon !h-4 !w-4 shrink-0 text-stone-400" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4 4"/></svg>
+          <label class="sr-only" for="shell-search">Buscar en la biblioteca</label>
+          <input class="min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-stone-400" id="shell-search" data-shell-search-input type="search" placeholder="Buscar títulos o autores..." autocomplete="off">
+          <kbd class="hidden rounded border border-stone-200 px-1.5 py-0.5 text-[10px] text-stone-400 dark:border-stone-700 sm:inline">ESC</kbd>
+        </form>
+      </div>
+
+      <button class="icon-button !h-9 !w-9 !rounded-lg" type="button" data-shell-menu-toggle aria-label="Opciones" aria-expanded="false">
+        <svg class="icon !h-[18px] !w-[18px]" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="19" cy="12" r="1" fill="currentColor"/></svg>
+      </button>
+      <div class="shell-menu" data-shell-menu hidden>
+        <button class="shell-menu-item" type="button" data-theme-toggle>
+          <span data-theme-label>Tema</span>
+        </button>
+        <button class="shell-menu-item" type="button" data-shell-go="settings">
+          <span>Ajustes de lectura</span>
+        </button>
+        <button class="shell-menu-item !text-rose-700 dark:!text-rose-300" type="button" data-shell-reset>
+          <span>Restablecer ejemplo</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Overlay para móvil -->
+  <div data-sidebar-overlay aria-hidden="true"></div>
+
+  <!-- Barra lateral colapsable -->
+  <nav class="shell-sidebar" data-sidebar aria-label="Navegación principal">
+    <div class="sidebar-section-label">Mi espacio</div>
+
+    <a class="sidebar-item is-active" href="./index.html" data-nav-item="library" title="Biblioteca" aria-current="page">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V5.5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"/><path d="M6 17.5h13M8 7h7M8 10h7"/></svg>
+      <span class="sidebar-label">Biblioteca</span>
+    </a>
+    <a class="sidebar-item" href="./index.html#history" data-nav-item="history" title="Historial">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+      <span class="sidebar-label">Historial</span>
+    </a>
+    <a class="sidebar-item" href="./pages/browse.html" data-nav-item="browse" title="Explorar">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"/></svg>
+      <span class="sidebar-label">Explorar</span>
+    </a>
+
+    <div class="sidebar-section-label">Descubrir</div>
+
+    <a class="sidebar-item" href="./index.html#sources" data-nav-item="sources" title="Fuentes">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3-9 5 9 5 9-5-9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></svg>
+      <span class="sidebar-label">Fuentes</span>
+    </a>
+
+    <div class="sidebar-section-label">Configuración</div>
+
+    <a class="sidebar-item" href="./index.html#settings" data-nav-item="settings" title="Ajustes">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.86 2.86-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21H9.55v-.1A1.7 1.7 0 0 0 8.5 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.86-2.86.06-.06A1.7 1.7 0 0 0 4.1 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H2.3V9.55h.1A1.7 1.7 0 0 0 4.1 8.5a1.7 1.7 0 0 0-.34-1.88l-.06-.06L6.56 3.7l.06.06A1.7 1.7 0 0 0 8.5 4.1a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V2.3h4.05v.1A1.7 1.7 0 0 0 15 4.1a1.7 1.7 0 0 0 1.88-.34l.06-.06 2.86 2.86-.06.06A1.7 1.7 0 0 0 19.4 8.5c.14.4.35.74.6 1 .3.3.7.45 1.1.45h.1v4.05h-.1A1.7 1.7 0 0 0 19.4 15Z"/></svg>
+      <span class="sidebar-label">Ajustes</span>
+    </a>
+  </nav>
+
+  <main class="shell-main min-h-screen pb-24 md:pb-8" id="shell-content" data-main-content>
+    <section class="shell-view" data-shell-view="library" aria-labelledby="library-heading">
+      <div class="mb-3 flex items-end justify-between gap-3 px-3 md:px-0">
+        <div>
+          <p class="shell-section-label mb-1">Mi colección</p>
+          <h1 class="shell-view-title" id="library-heading">Biblioteca</h1>
+          <p class="shell-view-subtitle mt-1" data-shell-search-summary>Tu colección personal</p>
+        </div>
+        <button class="shell-accent-button inline-flex items-center gap-1.5 rounded-lg bg-blue-800 px-3 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600" type="button" data-shell-go="sources">
+          <svg class="icon !h-4 !w-4" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          <span class="hidden sm:inline">Añadir fuente</span>
+        </button>
+      </div>
+
+      <div class="mb-3 flex gap-2 overflow-x-auto px-3 pb-1 md:px-0" role="group" aria-label="Filtrar biblioteca">
+        <button class="shell-filter is-active" type="button" data-shell-filter="all" aria-pressed="true">Todos</button>
+        <button class="shell-filter" type="button" data-shell-filter="reading" aria-pressed="false">Leyendo</button>
+        <button class="shell-filter" type="button" data-shell-filter="planned" aria-pressed="false">Por leer</button>
+        <button class="shell-filter" type="button" data-shell-filter="paused" aria-pressed="false">En pausa</button>
+        <button class="shell-filter" type="button" data-shell-filter="completed" aria-pressed="false">Terminados</button>
+        <button class="shell-filter" type="button" data-shell-filter="favorites" aria-pressed="false">Favoritos</button>
+      </div>
+
+      <p class="mb-0 px-3 text-[11px] font-medium text-stone-500 dark:text-stone-400 md:px-0" data-shell-count> Cargando títulos...</p>
+      <div class="shell-library-grid grid grid-cols-3 gap-3 p-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8" data-shell-grid aria-live="polite"></div>
+    </section>
+
+    <section class="shell-view" data-shell-view="history" aria-labelledby="history-heading" hidden>
+      <div class="mb-4 px-3 md:px-0">
+        <p class="shell-section-label mb-1">Tu recorrido</p>
+        <h1 class="shell-view-title" id="history-heading">Historial</h1>
+        <p class="shell-view-subtitle mt-1" data-shell-history-count> Actividad reciente</p>
+      </div>
+      <div class="shell-pane p-3 md:p-4">
+        <div class="grid gap-2 sm:grid-cols-2" data-shell-history></div>
+      </div>
+    </section>
+
+    <section class="shell-view" data-shell-view="sources" aria-labelledby="sources-heading" hidden>
+      <div class="mb-4 px-3 md:px-0">
+        <p class="shell-section-label mb-1">Extensiones y repositorios</p>
+        <h1 class="shell-view-title" id="sources-heading">Fuentes</h1>
+        <p class="shell-view-subtitle mt-1" data-shell-source-note>Gestiona desde dónde obtener tus próximas lecturas.</p>
+      </div>
+      <div class="shell-source-tabs mb-3 flex gap-1 rounded-xl border p-1" role="tablist" aria-label="Gestión de fuentes">
+        <button class="shell-source-tab is-active" type="button" role="tab" data-shell-source-tab="installed" aria-selected="true">Fuentes instaladas</button>
+        <button class="shell-source-tab" type="button" role="tab" data-shell-source-tab="available" aria-selected="false">Obtener extensiones</button>
+        <span class="ml-auto self-center pr-2 text-[11px] font-semibold text-stone-500 dark:text-stone-400" data-shell-source-count>— fuentes</span>
+      </div>
+      <div class="shell-source-list flex flex-col gap-2" data-shell-source-list aria-live="polite"></div>
+    </section>
+
+    <section class="shell-view" data-shell-view="settings" aria-labelledby="settings-heading" hidden>
+      <div class="mb-4 px-3 md:px-0">
+        <p class="shell-section-label mb-1">Preferencias</p>
+        <h1 class="shell-view-title" id="settings-heading">Ajustes</h1>
+        <p class="shell-view-subtitle mt-1">Personaliza tu forma de seguir leyendo.</p>
+      </div>
+
+      <div class="grid max-w-4xl gap-3 px-3 md:grid-cols-2 md:px-0">
+        <section class="shell-settings-card p-4">
+          <h2 class="text-sm font-semibold">Apariencia</h2>
+          <p class="mt-1 text-xs text-stone-500 dark:text-stone-400">Elige el ambiente que prefieras para leer.</p>
+          <div data-theme-selector></div>
+        </section>
+
+        <section class="shell-settings-card p-4">
+          <h2 class="text-sm font-semibold">Meta semanal</h2>
+          <p class="mt-1 text-xs text-stone-500 dark:text-stone-400">Objetivo de páginas para tu semana de lectura.</p>
+          <form class="mt-3 flex items-center gap-2" data-shell-goal-form>
+            <label class="sr-only" for="shell-goal">Páginas por semana</label>
+            <input class="min-w-0 flex-1 rounded-lg border border-stone-200 bg-stone-50 px-3 py-2 text-sm outline-none focus:border-blue-600 dark:border-stone-700 dark:bg-stone-950" id="shell-goal" data-shell-goal-input type="number" min="0" max="9999" value="180">
+            <button class="shell-accent-button rounded-lg bg-blue-800 px-3 py-2 text-xs font-semibold text-white hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600" type="submit">Guardar</button>
+          </form>
+        </section>
+
+        <section class="shell-settings-card p-4 md:col-span-2">
+          <h2 class="text-sm font-semibold">Datos locales</h2>
+          <p class="mt-1 text-xs text-stone-500 dark:text-stone-400">El progreso se guarda únicamente en este dispositivo mediante localStorage.</p>
+          <button class="mt-3 rounded-lg border border-rose-300 px-3 py-2 text-xs font-semibold text-rose-700 hover:bg-rose-50 dark:border-rose-900 dark:text-rose-300 dark:hover:bg-rose-950/30" type="button" data-shell-reset>Restablecer datos de ejemplo</button>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <nav class="shell-bottom-nav fixed bottom-0 w-full flex justify-around border-t border-stone-800 bg-stone-900 py-2 z-50 md:hidden" aria-label="Navegación inferior">
+    <button class="shell-bottom-item is-active" type="button" data-shell-nav="library" aria-current="page"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V5.5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"/><path d="M6 17.5h13M8 7h7M8 10h7"/></svg><span>Biblioteca</span></button>
+    <button class="shell-bottom-item" type="button" data-shell-nav="history" aria-current="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><span>Historial</span></button>
+    <button class="shell-bottom-item" type="button" data-shell-nav="sources" aria-current="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3-9 5 9 5 9-5-9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></svg><span>Explorar</span></button>
+    <button class="shell-bottom-item" type="button" data-shell-nav="settings" aria-current="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.86 2.86-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21H9.55v-.1A1.7 1.7 0 0 0 8.5 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.86-2.86.06-.06A1.7 1.7 0 0 0 4.1 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H2.3V9.55h.1A1.7 1.7 0 0 0 4.1 8.5a1.7 1.7 0 0 0-.34-1.88l-.06-.06L6.56 3.7l.06.06A1.7 1.7 0 0 0 8.5 4.1a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V2.3h4.05v.1A1.7 1.7 0 0 0 15 4.1a1.7 1.7 0 0 0 1.88-.34l.06-.06 2.86 2.86-.06.06A1.7 1.7 0 0 0 19.4 8.5c.14.4.35.74.6 1 .3.3.7.45 1.1.45h.1v4.05h-.1A1.7 1.7 0 0 0 19.4 15Z"/></svg><span>Ajustes</span></button>
+  </nav>
+
+  <div class="hidden" aria-hidden="true">
+    <span class="grid grid-cols-3 gap-3 p-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8"></span>
+    <span class="bg-rose-700 text-white text-xs px-1.5 py-0.5 rounded-br-lg font-bold shadow"></span>
+    <span class="bg-blue-800 text-white hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600"></span>
+  </div>
+</body>
+</html>

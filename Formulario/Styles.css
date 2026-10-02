@@ -1,0 +1,63 @@
+
+body{background-color: #FDFBF7;
+color: #4A443C; 
+padding: 15px  30px;
+
+
+}
+
+.botones{ 
+    background-color: #c4a780e8;
+    width: 200px; height: 50px;
+ border-radius: 15px;
+ border: 1px solid #c4a780e8;
+ font-size: larger;
+ font-weight: 800;
+ padding-right: 10px;
+ padding-left: 10px;
+ padding-bottom: 10px;
+ padding-top: 10px; 
+ cursor: pointer;
+ box-shadow: inherit;
+
+}
+
+fieldset{
+border:none;
+border-radius: 5px;
+padding: 5px;
+background-color: #F7F4EB;
+box-decoration-break: none;
+box-shadow: 3px;
+width: 1300px;
+height: 5%;
+margin: 5px;
+}
+
+legend{
+font-size: larger;
+color: #a18967;
+text-shadow: 1px #C5A880;
+}
+
+h2{
+background-color: #FDFBF7;
+border: none;
+padding: 5px;
+}
+
+.username{ background-color: #F7F4EB;
+box-shadow: 2px 3px #FDFBF7;
+
+}
+
+.Verificar{background-color: #c4a780e8;
+width: 90px; height: 100%;
+color: black;
+border-radius: 3.5px;
+}
+.UpFile{background-color: #c4a780e8;
+color: black;
+border-radius: 3.5px;
+
+}

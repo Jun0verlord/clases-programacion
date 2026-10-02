@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 860">
+  <defs>
+    <linearGradient id="time-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#263c50"/><stop offset="1" stop-color="#111f2d"/></linearGradient>
+  </defs>
+  <rect width="600" height="860" fill="url(#time-bg)"/>
+  <g fill="none" stroke="#9bb5c2" opacity=".34">
+    <circle cx="300" cy="385" r="186" stroke-width="3"/>
+    <circle cx="300" cy="385" r="150" stroke-width="1.5"/>
+    <circle cx="300" cy="385" r="112" stroke-width="1.5"/>
+    <path d="M300 180v410M95 385h410M153 238l294 294M153 532 447 238" stroke-width="1"/>
+    <path d="M300 385 405 240M300 385 190 315" stroke-width="5"/>
+  </g>
+  <circle cx="300" cy="385" r="12" fill="#d5e1e0"/>
+  <path d="M0 652c108-37 176-22 265 16 93 40 197 39 335-26v218H0Z" fill="#0d1a27"/>
+  <path d="M0 687c105-25 178-7 265 28 98 40 201 30 335-32" fill="none" stroke="#527b91" stroke-width="3" opacity=".75"/>
+  <text x="55" y="98" fill="#d0dfe1" font-family="sans-serif" font-size="20" letter-spacing="5">ANDRÉS ROWLAND</text>
+  <text x="55" y="190" fill="#fff" font-family="Georgia,serif" font-size="66">El siluaje</text>
+  <text x="55" y="260" fill="#fff" font-family="Georgia,serif" font-size="66">del tiempo</text>
+  <path d="M57 298h146" stroke="#a6c1ca" stroke-width="3"/>
+  <text x="55" y="786" fill="#b5cbd0" font-family="sans-serif" font-size="15" letter-spacing="3">EL FUTURO YA ESTÁ ESCRIBIENDO</text>
+</svg>
